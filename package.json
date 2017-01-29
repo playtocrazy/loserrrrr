@@ -5,5 +5,15 @@
   "main": "app.js",
   "repository": "https://github.com/playtocrazy/loserrrrr.git",
   "author": "Richard",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "errorhandler": "^1.5.0",
+    "express": "^4.14.1",
+    "http": "^0.0.0",
+    "morgan": "^1.7.0",
+    "path": "^0.12.7",
+    "pug": "^2.0.0-beta9",
+    "serve-favicon": "^2.3.2",
+    "serve-static": "^1.11.2"
+  }
 }
