@@ -1,5 +1,46 @@
 html
   head
     title= title
+    link(href='./static/css/material.min.css', rel='stylesheet')
+    script(src='./static/js/material.min.js')
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    link(href='http://fonts.googleapis.com/earlyaccess/notosanstc.css', rel='stylesheet')
+    style.
+      body {
+        background-color: #fafafa;
+        font-family: 'Noto Sans TC', sans-serif;
+      }
+      .noto {
+        font-family: 'Noto Sans TC', sans-serif !important;
+      }
+      .demo-card-wide.mdl-card {
+        width: 600px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -169.5px 0 0 -300px;
+      }
+      .demo-card-wide > .mdl-card__title {
+        color: #fff;
+        height: 254px;
+        background: url('./static/img/bg.png') center / cover;
+      }
+      .demo-card-wide > .mdl-card__menu {
+        color: #fff;
+      }
   body
-    h1 加我為好友吧
+    .demo-card-wide.mdl-card.mdl-shadow--2dp
+      .mdl-card__title
+        h2.mdl-card__title-text.noto LoserrrrR LINE bot
+      .mdl-card__supporting-text 加我好友試試看R!!
+      .mdl-card__actions.mdl-card--border
+        div(style='text-align: center;')
+          a(href='https://line.me/R/ti/p/%40azf4863i')
+            img(height='36', border='0', alt='加入好友', src='https://scdn.line-apps.com/n/line_add_friends/btn/zh-Hant.png')
+      .mdl-card__menu
+        button.mdl-button.mdl-button--icon.mdl-js-button.mdl-js-ripple-effect(onclick="javascript:location.href='https://line.me/R/ti/p/%40azf4863i'")
+          i.material-icons add
+
+
+
+
