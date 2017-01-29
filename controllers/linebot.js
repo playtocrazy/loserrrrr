@@ -2,6 +2,7 @@
  * LINE bot controllers
  */
 var LINEBot = require('line-messaging');
+var AWS = require('aws-sdk');
 
 exports.createWebhook = function(app, server){
     var bot = LINEBot.create({

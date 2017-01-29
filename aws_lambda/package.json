@@ -1,0 +1,9 @@
+{
+  "name": "aws_lambda",
+  "version": "1.0.0",
+  "description": "LoserrrrR service on AWS Lambda",
+  "main": "linebot.js",
+  "repository": "https://github.com/playtocrazy/loserrrrr.git",
+  "author": "Richard Lin",
+  "license": "MIT"
+}
