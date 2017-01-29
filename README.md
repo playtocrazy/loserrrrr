@@ -1,2 +1,2 @@
 # loserrrrr
-LINE bot - getting the hot article from PTT Beauty &amp; Gossiping board
+LINE bot - getting the hot article from PTT Beauty & Gossiping board
