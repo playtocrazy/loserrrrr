@@ -4,11 +4,16 @@
 var LINEBot = require('line-messaging');
 var request = require('request');
 
+var channelId = '1498715301',
+    channelSecret = 'd54920ce7dae98a511345961e24d546f',
+    channelToken = '/SXbu0ym5ciFMOst7N5/Lw1vHUUbcpNFHjMH3wHHl9Pv7hTANjzyKO+q7H4A6UuAG+ad+aWHl0/TGuKsplhTaea6y+YaSzWL0rdZ1KB9kCTS2S43oUjc+yhS+1I3gz2WBe5cIbFw/tL4zXdLp9RcUQdB04t89/1O/w1cDnyilFU=';
+
+
 exports.createWebhook = function(app, server){
     var bot = LINEBot.create({
-        channelID: '1498715301',
-        channelSecret: 'd54920ce7dae98a511345961e24d546f',
-        channelToken: '/SXbu0ym5ciFMOst7N5/Lw1vHUUbcpNFHjMH3wHHl9Pv7hTANjzyKO+q7H4A6UuAG+ad+aWHl0/TGuKsplhTaea6y+YaSzWL0rdZ1KB9kCTS2S43oUjc+yhS+1I3gz2WBe5cIbFw/tL4zXdLp9RcUQdB04t89/1O/w1cDnyilFU='
+        channelID: channelId,
+        channelSecret: channelSecret,
+        channelToken: channelToken
     }, server);
     app.use(bot.webhook('/webhook'));
     console.log("bind webhook success!");
@@ -16,7 +21,18 @@ exports.createWebhook = function(app, server){
     bot.on(LINEBot.Events.MESSAGE, function (replyToken, message) {
         console.log(message.getMessageType(), message.getText());
         console.log(replyToken);
-        if(message.getMessageType() === "text" && message.getText() === "B"){
+        replyMessage(replyToken, message);
+    });
+}
+
+var clientBot = LINEBot.create({
+    channelID: channelId,
+    channelSecret: channelSecret,
+    channelToken: channelToken
+})
+
+function replyMessage(replyToken, message){
+    if(message.getMessageType() === "text" && message.getText() === "B"){
             request('https://za8601p1g2.execute-api.us-west-2.amazonaws.com/prod/getcurrentdata', function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     var items = JSON.parse(body).Items;
@@ -32,13 +48,12 @@ exports.createWebhook = function(app, server){
                     var carousel = new LINEBot.CarouselTemplateBuilder(columns);
                     var template = new LINEBot.TemplateMessageBuilder('this is a template', carousel);
                     console.log("1 before send");
-                    bot.replyMessage(replyToken, template);
+                    clientBot.replyMessage(replyToken, template);
                 }
             })
         }else{
             var textMessageBuilder = new LINEBot.TextMessageBuilder("請輸入\"B\"以取得資料!");
             console.log("2 before send");
-            bot.replyMessage(replyToken, textMessageBuilder);
-        }        
-    });
+            clientBot.replyMessage(replyToken, textMessageBuilder);
+        }  
 }
