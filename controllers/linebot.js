@@ -19,8 +19,6 @@ exports.createWebhook = function(app, server){
     console.log("bind webhook success!");
 
     bot.on(LINEBot.Events.MESSAGE, function (replyToken, message) {
-        console.log(message.getMessageType(), message.getText());
-        console.log(replyToken);
         replyMessage(replyToken, message);
     });
 }
@@ -46,21 +44,12 @@ function replyMessage(replyToken, message){
                         columns.push(column)
                     })                
                     var carousel = new LINEBot.CarouselTemplateBuilder(columns);
-                    var template = new LINEBot.TemplateMessageBuilder('this is a template', carousel);
-                    console.log("1 before send");
+                    var template = new LINEBot.TemplateMessageBuilder('ob\'_\'ov', carousel);
                     clientBot.replyMessage(replyToken, template);
                 }
             })
         }else{
-            // var textMessageBuilder = new LINEBot.TextMessageBuilder("請輸入\"B\"以取得資料!");
-            console.log("2 before send");
-            // clientBot.replyMessage(replyToken, textMessageBuilder);
-            clientBot.replyTextMessage(replyToken, '請輸入\"B\"以取得資料!').then(function(data) {
-                // add your code when success.
-                console.log(data);
-            }).catch(function(error) {
-                // add your code when error.
-                console.log(error);
-            });
+            var textMessageBuilder = new LINEBot.TextMessageBuilder("請輸入\"B\"以取得資料!");
+            clientBot.replyMessage(replyToken, textMessageBuilder);
         }  
 }
