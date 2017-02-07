@@ -15,6 +15,7 @@ exports.createWebhook = function(app, server){
 
     bot.on(LINEBot.Events.MESSAGE, function (replyToken, message) {
         console.log(message.getMessageType(), message.getText());
+        console.log(replyToken);
         if(message.getMessageType() === "text" && message.getText() === "B"){
             request('https://za8601p1g2.execute-api.us-west-2.amazonaws.com/prod/getcurrentdata', function (error, response, body) {
                 if (!error && response.statusCode == 200) {
