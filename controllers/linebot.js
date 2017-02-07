@@ -52,8 +52,15 @@ function replyMessage(replyToken, message){
                 }
             })
         }else{
-            var textMessageBuilder = new LINEBot.TextMessageBuilder("請輸入\"B\"以取得資料!");
+            // var textMessageBuilder = new LINEBot.TextMessageBuilder("請輸入\"B\"以取得資料!");
             console.log("2 before send");
-            clientBot.replyMessage(replyToken, textMessageBuilder);
+            // clientBot.replyMessage(replyToken, textMessageBuilder);
+            clientBot.replyTextMessage(replyToken, '請輸入\"B\"以取得資料!').then(function(data) {
+                // add your code when success.
+                console.log(data);
+            }).catch(function(error) {
+                // add your code when error.
+                console.log(error);
+            });
         }  
 }
