@@ -14,8 +14,7 @@ exports.createWebhook = function(app, server){
     console.log("bind webhook success!");
 
     bot.on(LINEBot.Events.MESSAGE, function (replyToken, message) {
-        console.log(message);
-        if(message === "B"){
+        if(message.getMessageType() === "text" && message.getText() === "B"){
             request('https://za8601p1g2.execute-api.us-west-2.amazonaws.com/prod/getcurrentdata', function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     var items = JSON.parse(body).Items;
@@ -34,7 +33,8 @@ exports.createWebhook = function(app, server){
                 }
             })
         }else{
-            bot.replyMessage(replyToken, "請輸入B or G以取得照片!");
+            var textMessageBuilder = new LINEBot.TextMessageBuilder("請輸入\"B\"以取得資料!");
+            bot.replyMessage(replyToken, textMessageBuilder);
         }        
     });
 }
