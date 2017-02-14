@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /project/loserrrrr
+cd /home/ubuntu/project/loserrrrr/
 forever start app.js
