@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
  - source: /
-   destination: /project/loserrrrr/
+   destination: /home/ubuntu/project/loserrrrr/
 hooks:
  BeforeInstall:
    - location: deploy_scripts/install_dependencies.sh
